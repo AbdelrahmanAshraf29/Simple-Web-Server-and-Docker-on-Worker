@@ -1,4 +1,4 @@
-1. Ansible Project for Configuring Rocky Linux Worker Node
+# 1. Ansible Project for Configuring Rocky Linux Worker Node
 
 This project uses Ansible to configure a Rocky Linux worker node with Nginx and Docker. It includes steps for updating the system, installing necessary packages, and configuring services.
 
@@ -9,18 +9,18 @@ ansible-project/
 ├── inventory
 ├── web.yaml
 
-2. Set Up SSH Access
+# 2. Set Up SSH Access
 Generate an SSH key on the master machine.
 
-3. Configure Ansible Inventory
+# 3. Configure Ansible Inventory
 Edit the Ansible inventory file (inventory):
 
 [workers]
 worker-ip ansible_user=your_user
 
-4. Create the Ansible Playbook
+# 4. Create the Ansible Playbook
 
-5. Verify Nginx Installation and Configuration
+# 5. Verify Nginx Installation and Configuration
 Check if Nginx is installed and running:
 
 ssh user@worker-ip
