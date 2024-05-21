@@ -1,0 +1,54 @@
+---
+- name: Configure Worker Machine
+  hosts: workers
+  become: yes
+  tasks:
+    - name: Update all packages
+      yum:
+        name: "*"
+        state: latest
+
+    - name: Install required packages for Docker
+      yum:
+        name:
+          - yum-utils
+          - device-mapper-persistent-data
+          - lvm2
+        state: present
+
+    - name: Add Docker repository
+      command: |
+        yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+
+    - name: Install Docker
+      yum:
+        name: docker-ce
+        state: present
+
+    - name: Start and enable Docker
+      systemd:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: Add user to docker group
+      user:
+        name: user
+        groups: docker
+        append: yes
+
+    - name: Install nginx
+      yum:
+        name: nginx
+        state: present
+
+    - name: Start and enable nginx
+      systemd:
+        name: nginx
+        state: started
+        enabled: yes
+
+    - name: Create a sample web page
+      copy:
+        dest: /usr/share/nginx/html/index.html
+        content: "<html><body><h1>Welcome to Ansible Managed Server!</h1></body></html>"
