@@ -1,0 +1,9 @@
+# Ignore Ansible fact cache
+~/.ansible/
+*.retry
+
+# Ignore inventory files
+inventory
+
+# Ignore sensitive files
+*.vault_pass
