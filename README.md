@@ -4,7 +4,7 @@ This project uses Ansible to configure a Rocky Linux worker node with Nginx and 
 
 # Project Structure
 
-ansible-project/
+ansible-web-docker/
 ├── .gitignore
 ├── inventory
 ├── web.yaml
